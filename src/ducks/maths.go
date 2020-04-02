@@ -1,4 +1,4 @@
-package continuous
+package ducks
 
 import (
     "math"
@@ -14,15 +14,10 @@ func ComputeProbabilityDensity(a float64, t float64) float64 {
 func ComputeExpectedValue(value float64) float64 {
     var res float64 = 0.0
 
-    for t := 0.0; t < 50; t += 0.001 {
+    for t := 0.0; t < 100; t += Increment {
         res += ComputeProbabilityDensity(value, t) * t / 1000
     }
     return res
-}
-
-// ComputeAverageReturnTime - average return time
-func ComputeAverageReturnTime() {
-	
 }
 
 // ComputeVariance - variance
@@ -31,8 +26,14 @@ func ComputeVariance() {
 }
 
 // ComputeStandardDeviation - standard deviation
-func ComputeStandardDeviation() float64 {
-    return 0.0
+func ComputeStandardDeviation(a float64, meanTime float64) float64 {
+    var res float64 = 0.0
+
+    for t := 0.0; t < 200; t += Increment {
+        res += math.Pow(t - meanTime, 2) * ComputeProbabilityDensity(a, t) / 1000
+    }
+    res = math.Sqrt(res)
+    return res
 }
 
 // ComputeTimeDucksBack - Time after which [percentage] of the ducks are back
