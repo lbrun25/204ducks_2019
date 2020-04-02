@@ -24,11 +24,6 @@ func ComputeExpectedValue() float64 {
     return res
 }
 
-// ComputeVariance - variance
-func ComputeVariance() {
-    
-}
-
 // ComputeStandardDeviation - standard deviation
 func ComputeStandardDeviation(meanTime float64) float64 {
     var res float64 = 0.0
