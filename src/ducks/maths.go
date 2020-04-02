@@ -52,5 +52,7 @@ func ComputeTimeDucksBack(percentage float64) float64 {
 
 // ComputePercentageDucksBack - Percentage of ducks back after x minutes:
 func ComputePercentageDucksBack(min float64) float64 {
-    return 0.0
+    res := computeProbabilityDensityPercent(min) - computeProbabilityDensityPercent(0)
+    res *= 100
+    return res
 }
