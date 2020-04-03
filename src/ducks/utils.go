@@ -11,8 +11,13 @@ func SecondsToMinutes(inSeconds float64) string {
 	minutes := inSeconds / 60
 	seconds := math.Mod(inSeconds, 60)
 
-	res += fmt.Sprintf("%.0f", minutes) + "m "
-	res += fmt.Sprintf("0%.0f", seconds) + "s"
+	mmLHS, _ := math.Modf(minutes);
+	res += fmt.Sprintf("%.0f", mmLHS) + "m "
+	if len(fmt.Sprintf("0%.0f", seconds)) == 2 {
+		res += fmt.Sprintf("0%.0f", seconds) + "s"
+	} else {
+		res += fmt.Sprintf("%.0f", seconds) + "s"
+	}
 	return res
 }
 
